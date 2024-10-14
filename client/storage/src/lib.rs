@@ -65,6 +65,7 @@ where
 	BE: Backend<B> + 'static,
 {
 	fn account_code_at(&self, at: B::Hash, address: Address) -> Option<Vec<u8>> {
+		/*
 		match self.querier.storage_schema(at) {
 			Some(EthereumStorageSchema::V1) => {
 				SchemaV1StorageOverrideRef::new(&self.querier).account_code_at(at, address)
@@ -77,6 +78,8 @@ where
 			}
 			None => self.fallback.account_code_at(at, address),
 		}
+		*/
+		self.fallback.account_code_at(at, address)
 	}
 
 	fn account_storage_at(&self, at: B::Hash, address: Address, index: U256) -> Option<H256> {
